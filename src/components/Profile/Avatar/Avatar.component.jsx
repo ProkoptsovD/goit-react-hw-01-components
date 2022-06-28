@@ -2,20 +2,22 @@ import PropTypes from 'prop-types';
 import { UserAvatar } from './Avatar.styled';
 
 const defaultProps = {
-    avatarUrl: 'https://cdn-icons-png.flaticon.com/512/1077/1077012.png'
+    className: '',
+    avatarUrl: 'https://cdn-icons-png.flaticon.com/512/1077/1077012.png',
 }
 
-const Avatar = ({ avatarUrl } = defaultProps) => { 
+const Avatar = ({ avatarUrl, className } = defaultProps) => { 
     return (
         <UserAvatar
             src={avatarUrl || defaultProps.avatarUrl}
             alt="User avatar"
-            className="avatar"
+            className={className || ''}
         />
     )
 }
 
 Avatar.propTypes = {
+    className: PropTypes.string,
     avatarUrl: PropTypes.string,
 }
 

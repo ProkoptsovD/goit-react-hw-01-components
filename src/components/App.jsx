@@ -1,8 +1,16 @@
 import { ThemeProvider } from 'styled-components';
 import { theme } from "../theme";
+
+//=================== components ======================//
+import Container from './common/Container';
 import Profile from "./Profile";
+import Statistics from './Statistics';
+import FriendList from './FriendList';
+
+//========================= data ==================//
 import user from '../user.json';
-import Container from './Container';
+import data from '../data.json';
+import friends from '../friends.json';
 
 export const App = () => {
   return (
@@ -14,6 +22,13 @@ export const App = () => {
             location={user.location}
             avatar={user.avatar}
             stats={user.stats}
+          />
+          <Statistics
+            title='Upload stats'
+            stats={data}
+          />
+          <FriendList
+            friends={friends}
           />
         </Container>
       </ThemeProvider>

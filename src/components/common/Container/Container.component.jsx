@@ -4,7 +4,7 @@ import { AppContainer } from './Container.styled';
 const Container = ({ children, className }) => {
     return (
         <AppContainer
-            className={`container` + className || ''}
+            className={`container ${className || ''}`}
         >
             {children}
         </AppContainer>
