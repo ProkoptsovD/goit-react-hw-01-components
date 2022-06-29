@@ -16,11 +16,11 @@ export const App = () => {
       <ThemeProvider theme={theme}>
         <Container>
           <Profile
-            username={user.username}
-            tag={user.tag}
-            location={user.location}
-            avatar={user.avatar}
-            stats={user.stats}
+            username={user?.username}
+            tag={user?.tag}
+            location={user?.location}
+            avatar={user?.avatar}
+            stats={user?.stats}
           />
           <Statistics
             title='Upload stats'
