@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { ListOfFriends, ListItem, FriendStatus, FriendAvatar, FriendName } from './FriendList.styled';
+import { ListOfFriends } from './FriendList.styled';
+import FriendListItem from './FriendListItem';
 
 const defaultProps = [
     {
@@ -12,21 +13,11 @@ const defaultProps = [
 
 const FriendList = ({ friends = defaultProps }) => {
 
-    const renderFriends = (data) => data.map(({ avatar, name, isOnline, id }) => (
-        <ListItem
+    const renderFriends = (data) => data.map(({ id, ...restProps }) => (
+        <FriendListItem
             key={id}
-        >
-            <FriendStatus isOnline={isOnline} />
-            <FriendAvatar
-                avatarUrl={avatar}
-                className='friendList'
-            >
-                {avatar}
-            </FriendAvatar>
-            <FriendName>
-                {name}
-            </FriendName>
-        </ListItem>
+            {...restProps}
+        />
     ))
 
     return (

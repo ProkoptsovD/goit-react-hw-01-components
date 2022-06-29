@@ -8,6 +8,7 @@ export const ProfileCard = styled.div`
   width: 280px;
   height: auto;
   padding: ${({ theme }) => theme.spacing(10, 0, 0, 0)};
+  margin-bottom: ${({ theme }) => theme.spacing(10)};
   border-radius: 5px;
   background-color: var(--clr-light);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

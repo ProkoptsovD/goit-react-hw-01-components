@@ -17,6 +17,13 @@ export const ListItem = styled.li`
     width: 100%;
     padding: ${({ theme }) => theme.spacing(4)};
     background-color: ${({ bg }) => bg || 'var(--clr-light)'};
+
+    &:first-child {
+        border-bottom-left-radius: 5px;
+    }
+    &:last-child {
+        border-bottom-right-radius: 5px;
+    }
 `;
 export const StatLabel = styled.span`
     ${commonCSSLabelAndPercetage}
