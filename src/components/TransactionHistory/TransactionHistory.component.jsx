@@ -1,37 +1,40 @@
 import PropTypes from 'prop-types';
-import TransactionHeaders from './TransactionHeaders/TransactionHeaders.component';
-import { Transactions, TableBody, TransactionInfo, TransactionData } from './TransactionHistory.styled';
+import {
+    Transactions, TableBody, TransactionInfo,
+    TransactionData, TransactionHeader, HeaderTitle
+} from './TransactionHistory.styled';
 
-const defaultProps = {
-        id: 'test',
-        type: 'invoice',
-        amount: '0',
-        currency: 'USD',
-}
 const headers = [
-    'type',
+    'Type',
     'Amount',
     'Currency',
 ]
 
-const TransactionHistory = ({ items } = defaultProps) => {
-
-    const renderTransactionHistory = (data) => data.map(({ id, type, amount, currency }) => (
-        <TransactionInfo key={id}>
-            <TransactionData>{type}</TransactionData>
-            <TransactionData>{amount}</TransactionData>
-            <TransactionData>{currency}</TransactionData>
-        </TransactionInfo>
-    ));
-
+const TransactionHistory = ({ items }) => {
     return (
         <Transactions>
-            <TransactionHeaders
-                headerList={headers}
-            />
+            <TransactionHeader>
+                <tr>
+                    {
+                        headers.map(header => (
+                            <HeaderTitle key={header}>
+                                {header}
+                            </HeaderTitle>
+                        ))
+                    }
+                </tr>
+            </TransactionHeader>
 
             <TableBody>
-                {renderTransactionHistory(items)}
+                {
+                    items.map(({ id, type, amount, currency }) => (
+                        <TransactionInfo key={id}>
+                            <TransactionData>{type}</TransactionData>
+                            <TransactionData>{amount}</TransactionData>
+                            <TransactionData>{currency}</TransactionData>
+                        </TransactionInfo>
+                    ))
+                }
             </TableBody>
         </Transactions>
     )

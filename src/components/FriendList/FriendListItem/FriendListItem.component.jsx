@@ -1,21 +1,15 @@
 import PropTypes from 'prop-types';
 import { FriendStatus, FriendAvatar, FriendName, ListItem } from './FriendListItem.styled';
 
-const defaultProps = {
-    avatar: 'http://placehold.jp/150x150.png',
-    name: 'User',
-    isOnline: false,
-}
-
-const FriendListItem = ({ avatar, name, isOnline } = defaultProps) => {
+const FriendListItem = ({ avatar, name, isOnline } = {}) => {
     return (
         <ListItem>
             <FriendStatus
                 isOnline={isOnline}
             />
             <FriendAvatar
-                avatarUrl={avatar}
-                className='friendList'
+                src={avatar}
+                alt="User avatar"
             />
             <FriendName>
                 {name}

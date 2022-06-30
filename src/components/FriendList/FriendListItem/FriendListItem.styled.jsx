@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import Avatar from 'components/Profile/Avatar';
+import styled from 'styled-components';
 
 export const ListItem = styled.li`
     display: flex;
@@ -22,13 +21,13 @@ export const FriendStatus = styled.span`
     border-radius: 50%;
     background-color: ${({ isOnline }) => isOnline ? 'green' : 'red'};
 `;
-export const FriendAvatar = styled(Avatar)`
-    ${({ className }) => className === 'friendList' && css`
-        width: 48px;
-        height: 48px;
-        margin-bottom: 0;
-        border-radius: 10px;
-    `}
+export const FriendAvatar = styled.img`
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0;
+    border-radius: 10px;
+
+    overflow: hidden;
 `;
 export const FriendName = styled.p`
     margin-left: ${({ theme }) => theme.spacing(3)};

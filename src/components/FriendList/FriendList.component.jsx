@@ -1,28 +1,18 @@
 import PropTypes from 'prop-types';
+import FriendListItem from './FriendListItem/FriendListItem.component';
 import { ListOfFriends } from './FriendList.styled';
-import FriendListItem from './FriendListItem';
 
-const defaultProps = [
-    {
-        avatar: 'test',
-        name: 'test',
-        isOnline: false,
-        id: 0
-    }
-]
-
-const FriendList = ({ friends = defaultProps }) => {
-
-    const renderFriends = (data) => data.map(({ id, ...restProps }) => (
-        <FriendListItem
-            key={id}
-            {...restProps}
-        />
-    ))
-
+const FriendList = ({ friends }) => {
     return (
         <ListOfFriends>
-            {renderFriends(friends)}
+            {
+                friends.map(({ id, ...restProps }) => (
+                    <FriendListItem
+                        key={id}
+                        {...restProps}
+                    />
+                ))
+            }
         </ListOfFriends>
     )
 }

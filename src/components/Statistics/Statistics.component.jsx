@@ -1,14 +1,10 @@
-import Section from 'components/common/Section';
 import PropTypes from 'prop-types';
-import { StatisticList, ListItem, StatLabel, StatPercantage } from './Statistics.styled';
+import {
+    StatisticList, ListItem,
+    StatLabel, StatPercantage,
+    Section, SectionHeading
+} from './Statistics.styled';
 
-const defaultProps = {
-    stats: [{
-        id: 'tets',
-        label: 'test',
-        percentage: 0
-    }]
-}
 const colorPallete = [
     '#628395',
     '#96897B',
@@ -17,29 +13,29 @@ const colorPallete = [
     '#cf995f'
 ]
 
-const Statistics = ({ title, stats = defaultProps }) => {
-    
-    const renderStatistic = (data) => data.map(({id, label, percentage }, idx) => (
-        <ListItem
-            key={id}
-            bg={colorPallete[idx]}
-        >
-            <StatLabel>
-                {label}
-            </StatLabel>
-            <StatPercantage>
-                {`${percentage}%`}
-            </StatPercantage>
-        </ListItem>
-    ))
-    
+const Statistics = ({ title, stats }) => {
     return (
-        <Section
-            title={title}
-        >
+        <Section>
+            <SectionHeading>
+                {title}
+            </SectionHeading>
             <StatisticList>
-                {renderStatistic(stats)}
-            </StatisticList>
+                    {
+                        stats.map(({id, label, percentage }, idx) => (
+                            <ListItem
+                                key={id}
+                                bg={colorPallete[idx]}
+                            >
+                                <StatLabel>
+                                    {label}
+                                </StatLabel>
+                                <StatPercantage>
+                                    {`${percentage}%`}
+                                </StatPercantage>
+                            </ListItem>
+                        ))
+                    }
+                </StatisticList>
         </Section>
     )
 }

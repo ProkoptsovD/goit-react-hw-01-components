@@ -32,4 +32,13 @@ export const TransactionData = styled.td`
         border-right: 1px solid var(--clr-bg-secondary);
     }
 `;
+export const TransactionHeader = styled.thead`
+    text-transform: uppercase;
+    color: var(--clr-light);
+    background-color: var(--clr-table-header);
+`;
 
+export const HeaderTitle = styled.th`
+    padding: ${({ theme }) => theme.spacing(3, 0)};
+    text-align: center;
+`;

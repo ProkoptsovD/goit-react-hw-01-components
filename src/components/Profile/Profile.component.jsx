@@ -1,28 +1,54 @@
-import Avatar from "./Avatar";
-import Stats from "./Stats";
-import UserInfo from "./UserInfo";
-import { ProfileCard, Wrapper } from './Profile.styled';
+import PropTypes from 'prop-types';
+import {
+    ProfileCard, Wrapper, UserAvatar,
+    UserName, UserTag, UserLocation,
+    StatsList, ListItem, StatsLabel, StatsQuantaty
+} from './Profile.styled';
 
-const Profile = ({username, tag, location, avatar, stats}) => {
+const Profile = ({ username, tag, location, avatar, stats }) => {
 
     return (
         <ProfileCard>
             <Wrapper>
-                <Avatar
-                    avatarUrl={avatar}
+                <UserAvatar
+                    src={avatar}
+                    alt="User avatar"
                 />
-                <UserInfo
-                    username={username}
-                    tag={tag}
-                    location={location}
-                />
+                <UserName>
+                    {username}
+                </UserName>
+                <UserTag>
+                    {`@${tag}`}
+                </UserTag>
+                <UserLocation>
+                    {location}
+                </UserLocation>
             </Wrapper>
-            <Stats
-                stats={stats}
-            />
+
+            <StatsList>
+                {
+                    Object.keys(stats).map(stat => (
+                        <ListItem key={stat}>
+                            <StatsLabel>
+                                {stat}
+                            </StatsLabel>
+                            <StatsQuantaty>
+                                {stats[stat]}
+                            </StatsQuantaty> 
+                        </ListItem>))
+                }
+            </StatsList>
         </ProfileCard>
 
     )
+}
+
+Profile.propTypes = {
+    username: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    stats: PropTypes.object.isRequired,
 }
 
 export default Profile;
