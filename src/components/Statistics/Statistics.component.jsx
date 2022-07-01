@@ -4,27 +4,22 @@ import {
     StatLabel, StatPercantage,
     Section, SectionHeading
 } from './Statistics.styled';
-
-const colorPallete = [
-    '#628395',
-    '#96897B',
-    '#dfd5a5',
-    '#dbad6a',
-    '#cf995f'
-]
+import { getRandomHexColor } from 'helpers/getRandomHexColor';
 
 const Statistics = ({ title, stats }) => {
     return (
         <Section>
-            <SectionHeading>
-                {title}
-            </SectionHeading>
+            {
+                title && <SectionHeading>
+                            {title}
+                        </SectionHeading>
+            }
             <StatisticList>
                     {
-                        stats.map(({id, label, percentage }, idx) => (
+                        stats.map(({ id, label, percentage }) => (
                             <ListItem
                                 key={id}
-                                bg={colorPallete[idx]}
+                                bg={getRandomHexColor()}
                             >
                                 <StatLabel>
                                     {label}
